@@ -1,0 +1,11 @@
+start address read as decimal, should be hex
+need clear memory button more like reset
+need restart button, sets pc back to start address
+assembler
+put controls as grid on same table as pc, ir etc.
+put something in test, probably put small program in code box
+and set start address
+clear debug button
+clear debug window when step or run is clicked
+control to turn debug on and off, make column visible or not
+microstep mode, show decode, memory fetches etc.

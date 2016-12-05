@@ -1,0 +1,9 @@
+table {
+    font-size: 12;border: medium green;
+    border-collapse: separate; border-spacing: 2pt 2pt
+}
+.reading {width: 150; border-style: solid; font-size: 12pt;}
+
+.example {font-family:monospace; align:center; background-color:beige;}
+
+em {font-variant: small-caps; font-style:normal; font-weight: bolder;}

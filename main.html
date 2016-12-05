@@ -1,0 +1,53 @@
+<html>
+<head>
+	<script LANGUAGE="JavaScript" src="util.js"></script>
+	<script LANGUAGE="JavaScript" src="display.js"></script>
+	<script LANGUAGE="JavaScript" src="machine.js"></script>
+	<script LANGUAGE="JavaScript" src="machinstr.js"></script>
+	<script LANGUAGE="JavaScript" src="commands.js"></script>
+	<link href="machine.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<script language="javascript">
+var Memory = new Array();
+var Registers = new Array();
+var Runflag=true;
+var MemDisp=16;
+var NumRegs=16;
+</script>
+</script>
+<script language="javascript">
+   document.writeln("<table><tr><td>");
+   make_special();
+   document.writeln("</td><td>");
+   make_control();
+   document.writeln("</td></tr></table>");
+   make_prog();
+   init();
+</script>
+<hr>
+<h2>Instructions</h2>
+These are not very complete instructions but they should help a little.
+Type the program into the program box. 
+I recommend first typing it into an editor and cutting and pasting 
+as there is no save operation in the simulator.
+<p>
+Memory can be preloaded by typing entries of the form<br>
+addr=value<br>
+Then press the 'Set Mem' to initialize the memory values.
+<p>
+Put the starting address in the address box. 
+The memory boxes will start at that address and each one shows 16 cells.
+Press 'load' to put the program into memory.
+Then you can either step through it or run it all at once.
+There is precious little error help.
+<p>
+The rotate instruction appears to be working.
+Floating point addition is the same as integer addition.
+There is no ability to alter memory except through instructions.
+Same with registers.
+<p>
+Try it out and please send comments or bugs to
+<a href="mailto:karchie@lucent.com"> karchie@lucent.com </a>.
+</body>
+</html>
