@@ -6,3 +6,4 @@ tabe js/util.js
 tabe css/machine.css
 tabe main.html
 tabe machinenotes.html
+tabe README.md

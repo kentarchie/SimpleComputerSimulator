@@ -1,5 +1,10 @@
 # SimpleComputerSimulator
 Implementation of a simple processor to demonstrate basic computer principles
+The architecture is specified in the book
+Computer Science: An Overview
+J. Glenn Brookshear
+Addison-Wesley 1997
+ISBN 0-8053-4632-5
 #The hypothetical machine
 The book uses an imaginary computer for discussion purposes.
 Its much simpler than real computers and has just the right properties to show off
