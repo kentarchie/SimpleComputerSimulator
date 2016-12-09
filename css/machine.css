@@ -2,6 +2,19 @@ table {
     font-size: 12;border: medium green;
     border-collapse: separate; border-spacing: 2pt 2pt
 }
+.controlDisplay {
+    display:table;
+    border: 1px solid red;
+}
+.displayCell {
+    width:10em;
+    display:table-cell;
+    border-right: 1px solid green;
+}
+.controlButton {
+    background-color:red;
+    color:white;
+}
 .reading {width: 150; border-style: solid; font-size: 12pt;}
 
 .example {font-family:monospace; align:center; background-color:beige;}

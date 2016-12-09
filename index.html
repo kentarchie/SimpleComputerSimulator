@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link href="machine.css" rel="stylesheet" type="text/css">
+    <link href="css/machine.css" rel="stylesheet" type="text/css">
 <script language="javascript">
 var Memory = new Array();
 var Registers = new Array();
@@ -98,40 +98,39 @@ function makeregcol()
 
 </head>
 <body>
-<form name="program">
-		  <table border>
-	<tr>
-		<td>
-			<table border> <tr>
-			<th width=50>Program Counter <hr><span style='font-size:12' id='pc'>0000</span></th>
-			<th width=50>Instruction Register <hr><span id='ir'>0000</span></th>
-			<th width=50>Start Address <hr>
-   			<input type=text name='start_addr' size=10>
-			</th>
-			</tr></table>
-		</td>
-		<th width='13em'><b>Status</b><hr>
-				<div style='width:13em' id='status'>hello there</div>
-		</th>
-	</tr>
-	</table>
+<div class='controlDisplay'>
+			<div class='displayCell'>
+             Program Counter <hr /><span id='pc'>0000</span>
+         </div>
+			<div class='displayCell'>
+             Instruction Register <hr /><span id='ir'>0000</span>
+         </div>
+			<div class='displayCell'>
+             Start Address <hr />
+   			<input type=text name='start_addr' size=10 />
+			</div>
+		<div class='displayCell'>
+          Status <hr />
+				<div id='status'>hello there</div>
+		</div>
+</div>
 
-	<table>
-	  <tr>
-		<td> <input type='button' value='Set Mem' name='setm' onClick='setmem();'> </td>
-		<td> <input type='button' value='Load' name='Load' onClick='loadit();'> </td>
-		<td> <input type='button' value='Run' name='Run' onClick='runit();'> </td>
-		<td> <input type='button' value='Step' name='Step' onClick='stepit();'> </td>
-		<td> <input type='button' value='Clear' name='Clear' onClick='clearit();'> </td>
-		<td> <input type='button' value='Test' name='Test' onClick='Test();'> </td>
-		<td id='newmem' style='visibility:hidden'>
+<table>
+	<tr>
+     <td> <button class='controlButton' type='button' id='setm'  name='setm'  onClick='setmem();'>Set Mem</button> </td>
+     <td> <button class='controlButton' type='button' id='Load'  name='Load'  onClick='loadit();'>Load</button> </td>
+     <td> <button class='controlButton' type='button' id='Run'   name='Run'   onClick='runit();'>Run</button> </td>
+     <td> <button class='controlButton' type='button' id='Step'  name='Step'  onClick='stepit();'>Step</button> </td>
+     <td> <button class='controlButton' type='button' id='Clear' name='Clear' onClick='clearit();'>Clear</button> </td>
+     <td> <button class='controlButton' type='button' id='Test'  name='Test'  onClick='Test();'>Test</button> </td>
+	  <td id='newmem' style='visibility:hidden'>
 			New memory value<br>
 			<input type='text' name='memchange' size=5><br>
-			<input type='button' value='Change' name='memtxt' onClick='chgmem();'>
+         <button type='button' id='memtxt' name='memtxt' onClick='chgmem();'>Change</button>
 			<input type='hidden' value='mem0' name='whichcell'>
-		</td>
-		</tr>
-	</table>
+	  </td>
+	</tr>
+</table>
 
 	<table border>
 	<tr>

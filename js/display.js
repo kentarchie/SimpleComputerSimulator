@@ -68,13 +68,3 @@ function clearit()
    document.program.prog.value="";
    set_status("");
 }
-
-function make_special()
-{
-   document.writeln("<form name=special>\n<table>\n<tr>");
-   document.writeln("<th>Program <br>Counter</th>");
-   document.writeln("<th>Instruction <br>Register</th>\n</tr>");
-   document.writeln("<tr>\n<td><INPUT type=text name=PC size=10></td>\n");
-   document.writeln("<td><INPUT type=text name=IR size=10></td>\n</tr>");
-   document.writeln("</table>\n</form>");
-} // make_special
