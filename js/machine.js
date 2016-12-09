@@ -1,3 +1,6 @@
+$(document).ready(function() {
+	init();
+});
 // check the range of the value
 function checkVrange(v)
 {
@@ -33,15 +36,15 @@ function setmem(m,v)
 {
 		if(!checkVrange(v)) return;
 		if(!checkMrange(m)) return;
-   	var mem = MWJ_findObj("mem" + m );
+   	var mem = document.getElementById("mem" + m );
 		mem.innerHTML = v;
 } // setmem
 
-// return the value at memory location m 
+// return the value at memory location m
 function getmem(m)
 {
 		if(!checkMrange(m)) return;
-   	var mem = MWJ_findObj("mem" + m );
+   	var mem = document.getElementById("mem" + m );
 		return mem.innerHTML;
 } // getmem
 
@@ -50,7 +53,7 @@ function setreg(r,v)
 {
 		if(!checkVrange(v)) return;
 		if(!checkRrange(r)) return;
-   	var reg = MWJ_findObj("r" + r );
+   	var reg = document.getElementById("r" + r );
 		reg.innerHTML = v;
 } // setreg
 
@@ -58,7 +61,7 @@ function setreg(r,v)
 function getreg(r)
 {
 		if(!checkRrange(r)) return;
-   	var reg = MWJ_findObj("r" + r );
+   	var reg = document.getElementById("r" + r );
 		return reg.innerHTML - 0; // convert from string to number
 } // getreg
 
@@ -66,29 +69,29 @@ function getreg(r)
 function setPC(v)
 {
 		if(!checkVrange(v)) return;
-   	var pc = MWJ_findObj("pc");
+   	var pc = document.getElementById("pc");
 		pc.innerHTML = v;
 } // setPC
 
 // return the value of PC as an integer
 function getPC()
 {
-   	var pc = MWJ_findObj("pc");
-		return pc.innerHTML; 
+   	var pc = document.getElementById("pc");
+		return pc.innerHTML;
 } // getPC
 
 // set IR to the string value v
 function setIR(v)
 {
-   	var ir = MWJ_findObj("ir");
+   	var ir = document.getElementById("ir");
 		ir.innerHTML = v;
 } // setIR
 
 // return the value of IR as an string
 function getIR()
 {
-   	var ir = MWJ_findObj("ir");
-		return ir.innerHTML; 
+   	var ir = document.getElementById("ir");
+		return ir.innerHTML;
 } // getIR
 
 // implements the machine
@@ -122,31 +125,31 @@ function execute(instr)
          setreg(hex_dec(instr.slice(1,2)),fres);
          set_status("Add float R" + instr.slice(1,2) + " = R" + instr.slice(3,4) + " + R" + instr.slice(2,3));
          break;
-      case '7' : // or 
+      case '7' : // or
          var left=getreg(hex_dec(instr.slice(3,4)));
          var right=getreg(hex_dec(instr.slice(2,3)));
          setreg(hex_dec(instr.slice(1,2)),left | right);
          set_status("bitwise or R" + instr.slice(1,2) + " = R" + instr.slice(3,4) + " ! R" + instr.slice(2,3));
          break;
-      case '8' : // and 
+      case '8' : // and
          var left=getreg(hex_dec(instr.slice(3,4)));
          var right=getreg(hex_dec(instr.slice(2,3)));
          setreg(hex_dec(instr.slice(1,2)),left & right);
          set_status("bitwise and R" + instr.slice(1,2) + " = R" + instr.slice(3,4) + " & R" + instr.slice(2,3));
          break;
-      case '9' : // xor 
+      case '9' : // xor
          var left=getreg(hex_dec(instr.slice(3,4)));
          var right=getreg(hex_dec(instr.slice(2,3)));
          setreg(hex_dec(instr.slice(1,2)),xor(left,right));
          set_status("bitwise xor R" + instr.slice(1,2) + " = R" + instr.slice(3,4) + " ^ R" + instr.slice(2,3));
          set_status("bitwise xor");
          break;
-      case 'A' : // rotate 
+      case 'A' : // rotate
          var res=rotate(instr.slice(1,2),instr.slice(3,4));
          setreg(hex_dec(instr.slice(1,2)),res);
          set_status("rotate R"+instr.slice(1,2)+ " "+instr.slice(3,4)+" places");
          break;
-      case 'B' : // jump 
+      case 'B' : // jump
          var rn=getreg(hex_dec(instr.slice(1,2)));
          var r0=getreg(0);
          if(rn == r0)   // jump

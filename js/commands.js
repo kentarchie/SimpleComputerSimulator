@@ -8,9 +8,9 @@ function loadit()
 	var mem;
    init();
    for(i=0;i<code.length;i++) {
-   	mem = MWJ_findObj("mem" + (start + (i*2)));
+   	mem = document.getElementById("mem" + (start + (i*2)));
       mem.innerHTML = code[i].slice(0,2);
-   	mem = MWJ_findObj("mem" + (start + (i*2)+1));
+   	mem = document.getElementById("mem" + (start + (i*2)+1));
       mem.innerHTML = code[i].slice(2,4);
    }
    setPC(document.program.start_addr.value);

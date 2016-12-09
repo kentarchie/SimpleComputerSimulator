@@ -1,101 +1,7 @@
 <html>
 <head>
+    <title>SimpleComputerSimulator</title>
     <link href="css/machine.css" rel="stylesheet" type="text/css">
-<script language="javascript">
-var Memory = new Array();
-var Registers = new Array();
-var Runflag=true;
-var MemDisp=16;  // number of memory cells in a column
-var NumMemCols=7; // number of memory display columns
-var NumMemCells = MemDisp * NumMemCols;  // total size of memory
-var NumRegs=16;
-
-/*
-	When a memory or register cell is clicked, an input box
-	and button appear. the new value for the cell is entered in the
-	textbox and when the change button is pressed, the value is set
-	into the memory cell.
-	This routine stores the id of the clicked cell in a form variable
-	and makes the box and button visible.
-*/
-function clicked(cell)
-{
-	// just in case, we will clear the background of the
-	// previously chosen cell. This is cleared by the chgmem()
-	// routine, but you never know.
-   var x = MWJ_findObj('whichcell'); // find the hidden field
-   var y = MWJ_findObj(x.value); // find the memory element
-	y.style.backgroundColor='white';
-
-   x = MWJ_findObj(cell.id); // find the memory cell that was clicked
-	x.style.backgroundColor='lightgray';
-   // find the table cell that holds the
-   // form elements to get the new value
-   var x = MWJ_findObj('newmem');
-   x.style.visibility = 'visible'; // make them visible
-   x = MWJ_findObj('whichcell');  // find the hidden field
-   // save the id of the clicked on memory element
-   x.value = cell.id;  
-   x = MWJ_findObj('memchange');  // find the input text box
-   x.focus();
-} // clicked
-
-function chgmem()
-{
-   var x = MWJ_findObj('whichcell'); // find the hidden field
-   // the contents of the field is the id of the
-   // memory element that was clicked
-   var y = MWJ_findObj(x.value); // find the memory element
-   var z = MWJ_findObj('memchange'); // find the input box
-   y.innerHTML = z.value; // change the memory elements value
-   y.style.backgroundColor='white';
-   z.value='';  // clear the new value from the input box
-
-   // find the table cell that holds the
-   // form elements to get the new value
-   x = MWJ_findObj('newmem');
-   x.style.visibility = 'hidden';  // make invisible
-} // chgmem
-
-// convert a single decimal digit to hex
-function tohex(d)
-{
-	var hexstring="0123456789ABCDEF";
-	if(d < 16)
-		return hexstring.charAt(d);
-	return '-';
-} // tohex
-
-function makememcol(c)
-{
-	var num,i,id,label,sp;
-	document.write('<table id="memcol' + c + '" >\n');
-	for(i=0;i<MemDisp; i++) {
-		// unique, sequential memory cell ids
-		num=i + (MemDisp * c);
-		id="mem" + num;
-   	label = tohex(c) + "" + tohex(i) + ":";
-   	sp = " <span style='font-size:12' id='" + id + "' onClick = 'clicked(this);'>00</span>";
-   	document.write("<tr><td width=40>" + label + sp + "</td></tr>\n");
-	} // for
-	document.write('</table>\n');
-} // makememcol
-
-function makeregcol()
-{
-	var i,id,label,sp;
-	document.write('<table id="regcol" >\n');
-	for(i=0;i<NumRegs; i++) {
-   	id= "r" + i;
-   	label = "R" + tohex(i) + ":";
-   	sp = " <span style='font-size:12' id='" + id + "' onClick = 'clicked(this);'>00</span>";
-   	document.write("<tr><td width=40>" + label + sp + "</td></tr>\n");
-	} // for
-	document.write('</table>\n');
-} // makeregcol
-
-</script>
-
 </head>
 <body>
 <div class='controlDisplay'>
@@ -132,26 +38,21 @@ function makeregcol()
 	</tr>
 </table>
 
-	<table border>
+	<table>
 	<tr>
-		<td><b>Program Text</b><br>
-   		    <textarea name='prog' rows=17 cols=8></textarea>
+		<td>
+      <b>Program Text</b> <br />
+   		<textarea name='prog' rows=17 cols=8></textarea>
 		</td>
 		<td>
-<script language="javascript">
-       makeregcol();
-</script>
+      <table id="registers">
+      </table>
 		</td>
 	<td>
-<script language="javascript">
-    document.write("<table id='mainmem' border>\n<tr>");
-	 for(i=0; i< NumMemCols ; i++) {
-       document.write("<td>\n");
-       makememcol(i);
-       document.write("</td>\n");
-    }
-    document.write("</tr>\n</table>\n");
-</script>
+      <table id="mainmem">
+        <tr id="mainmem_tr">
+        </tr>
+      </table>
 			</td>
 		<td width='20em'><b>Debug</b><br>
 				  <textarea name='debug' rows=15></textarea>
@@ -163,10 +64,10 @@ function makeregcol()
 Try it out and please send comments or bugs to
 <a href="mailto:depaul@archie-perkins.com">depaul@archie-perkins.com</a>.
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/machine.js"></script>
     <script type="text/javascript" src="js/util.js"></script>
     <script type="text/javascript" src="js/display.js"></script>
-    <script type="text/javascript" src="js/machine.js"></script>
     <script type="text/javascript" src="js/machinstr.js"></script>
     <script type="text/javascript" src="js/commands.js"></script>
 </body>
-</html>
+  </html>
