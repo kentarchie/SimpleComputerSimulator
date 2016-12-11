@@ -1,9 +1,9 @@
 var Memory = new Array();
 var Registers = new Array();
 var Runflag=true;
-var MemDisp=16;  // number of memory cells in a column
-var NumMemCols=7; // number of memory display columns
-var NumMemCells = MemDisp * NumMemCols;  // total size of memory
+var MemRows=16;  // number of memory cells in a column
+var MemCols=16; // number of memory display columns
+var NumMemCells = MemRows * MemCols;  // total size of memory
 var NumRegs=16;
 
 // display controls
@@ -37,7 +37,15 @@ function init()
    var ir = document.getElementById('ir');
    ir.innerHTML="";
    makeregcol();
-   memMaker();
+   makemem();
+
+   // register control buttons
+  $('setm').click(setmem);
+  $('Load').click(loadit);
+  $('Run').click(runit);
+  $('Step').click(stepit);
+  $('Clear').click(clearit);
+  //$('Test').click(Test);
 }
 
 function clearit()
@@ -103,35 +111,30 @@ function tohex(d)
 	return '-';
 } // tohex
 
-function memMaker()
+function makemem()
 {
-   var tr = document.getElementById("mainmem_tr");
-   var str = "";
-	 for(i=0; i< NumMemCols ; i++) {
-       str += '<td>';
-       str += "<td>\n";
-       str += makememcol(i);
-       str += '</td>';
-    }
-    tr.innerHTML=str;
-} // memMaker
-
-function makememcol(c)
-{
-	var num,i,id,label,sp;
+	var num,id,label,sp;
   var str="";
-	str += '<table id="memcol' + c + '" >\n';
-	for(i=0;i<MemDisp; i++) {
-		// unique, sequential memory cell ids
-		num=i + (MemDisp * c);
-		id="mem" + num;
-   	label = tohex(c) + "" + tohex(i) + ":";
-   	sp = " <span style='font-size:12' id='" + id + "' onClick = 'clicked(this);'>00</span>";
-   	str += "<tr><td width=40>" + label + sp + "</td></tr>\n";
-	} // for
+  var memTable = document.getElementById("memoryBlock");
+	str += "<table id='memory'>\n";
+	for(var row=0;row<MemRows; row++) {
+    str += '<tr>';
+	  for(var col=0; col< MemCols ; col++) {
+       str += '<td>';
+		     // unique, sequential memory cell ids
+		     num=col + (MemRows * row);
+		     id="mem" + num;
+   	     label = tohex(row) + "" + tohex(col) + ":";
+   	     sp = " <span style='font-size:12' id='" + id + "' onClick = 'clicked(this);'>00</span>";
+   	     str += label;
+   	     str +=  sp;
+       str += '</td>';
+	  } // for
+    str += '</tr>';
+  }
 	str += '</table>\n';
-  return str;
-} // makememcol
+  memTable.innerHTML = str;
+} // makemem
 
 function makeregcol()
 {
@@ -142,7 +145,7 @@ function makeregcol()
    	id= "r" + i;
    	label = "R" + tohex(i) + ":";
    	sp = " <span style='font-size:12' id='" + id + "' onClick = 'clicked(this);'>00</span>";
-   	str+= "<tr><td width=40>" + label + sp + "</td></tr>\n";
+   	str+= "<li width=40>" + label + sp + "</li>\n";
 	} // for
   regs.innerHTML = str;
 } // makeregcol
