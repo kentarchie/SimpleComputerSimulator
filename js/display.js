@@ -6,11 +6,41 @@ var MemCols=16; // number of memory display columns
 var NumMemCells = MemRows * MemCols;  // total size of memory
 var NumRegs=16;
 
+function init()
+{
+   for(i=0;i<16;i++) Registers[i]="00";
+   for(i=0;i<255;i++) Memory[i]="00";
+   var pc = document.getElementById('pc');
+   pc.innerHTML="00";
+   var ir = document.getElementById('ir');
+   ir.innerHTML="00";
+   makeregcol();
+   makemem();
+
+   // register control buttons
+  $('setm').click(setmem);
+  $('Load').click(loadit);
+  $('Run').click(runit);
+  $('Step').click(stepit);
+  $('Clear').click(clearit);
+  //$('Test').click(Test);
+} // init
+
+function flashUpdate(el,value)
+{
+   $('#' + el).text(value);
+   $('#' + el).addClass('highlighted');
+   setTimeout(function(){
+     $('#' + el).removeClass('highlighted');
+    }, 500);
+} // flashUpdate
+
 // display controls
 function set_status(str)
 {
-   var status = document.getElementById('status');
-   status.innerHTML=str;
+   //var status = document.getElementById('status');
+   //status.innerHTML=str;
+   flashUpdate('status',str);
 } // set_status
 
 function writedebug(str)
@@ -27,26 +57,6 @@ function showregs()
   } // inner for
   document.program.regs.value=memstr;
 } // showregs
-
-function init()
-{
-   for(i=0;i<16;i++) Registers[i]="00";
-   for(i=0;i<255;i++) Memory[i]="00";
-   var pc = document.getElementById('pc');
-   pc.innerHTML="00";
-   var ir = document.getElementById('ir');
-   ir.innerHTML="";
-   makeregcol();
-   makemem();
-
-   // register control buttons
-  $('setm').click(setmem);
-  $('Load').click(loadit);
-  $('Run').click(runit);
-  $('Step').click(stepit);
-  $('Clear').click(clearit);
-  //$('Test').click(Test);
-}
 
 function clearit()
 {
@@ -125,8 +135,8 @@ function makemem()
 		     num=col + (MemRows * row);
 		     id="mem" + num;
    	     label = tohex(row) + "" + tohex(col) + ":";
-   	     sp = " <span style='font-size:12' id='" + id + "' onClick = 'clicked(this);'>00</span>";
-   	     str += label;
+   	     sp = "<span class='memoryCell' id='" + id + "' onClick = 'clicked(this);'>00</span>";
+   	     str += "<label>"+label+"</label>";
    	     str +=  sp;
        str += '</td>';
 	  } // for
@@ -143,8 +153,8 @@ function makeregcol()
   var str = "";
 	for(i=0;i<NumRegs; i++) {
    	id= "r" + i;
-   	label = "R" + tohex(i) + ":";
-   	sp = " <span style='font-size:12' id='" + id + "' onClick = 'clicked(this);'>00</span>";
+   	label = '<label>'+"R" + tohex(i) + ":" + '</label>';
+   	sp = " <span class='registerCell' id='" + id + "' onClick = 'clicked(this);'>00</span>";
    	str+= "<li width=40>" + label + sp + "</li>\n";
 	} // for
   regs.innerHTML = str;

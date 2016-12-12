@@ -5,35 +5,8 @@
     <link rel='stylesheet' type='text/css' href='css/machine.css' />
   </head>
 <body>
-  <div class='controlDisplay'>
-			<div>
-             Program Counter <hr />
-             <span id='pc'>0000</span>
-      </div>
-			<div>
-             Instruction Register <hr />
-             <span id='ir'>0000</span>
-      </div>
-			<div>
-        Start Address <hr />
-   			<span><input type='text' name='start_addr' size=10 /></span>
-			</div>
-		  <div>
-        Status <hr />
-				<span id='status'>hello there</span>
-		  </div>
-  </div>
 
-  <div class='controlButtons'>
-    <button type='button' id='setm' name='setm'>Set Mem</button>
-    <button type='button' id='Load' name='Load'>Load</button>
-    <button type='button' id='Run'  name='Run'>Run</button>
-    <button type='button' id='Step' name='Step'>Step</button>
-    <button type='button' id='Clear'name='Clear'>Clear</button>
-    <button type='button' d='Test' name='Test'>Test</button>
-  </div>
-
-<div id='newmem' style='visibility:hidden'>
+<div id='newmem' style='display:none'>
 			New memory value <br />
 			<input type='text' name='memchange' size=5 /> <br />
       <button type='button' id='memtxt' name='memtxt' onClick='chgmem();'>Change</button>
@@ -41,24 +14,59 @@
 </div>
 
 <section>
-<div class='displayBlock codeEntry'>
-    <span>Program Text</span><br />
-   	<textarea id='prog' name='prog' rows=17 cols=8></textarea>
-</div>
+  <div class='displayBlock codeEntry'>
+      <label>Program Text</label><br />
+     	<textarea id='prog' name='prog' rows=10 cols=8></textarea>
+  </div>
 
-<div class='displayBlock debugger'>
-  <span>Debug</span> <br />
-	<textarea id='debug' name='debug' rows=15></textarea>
-</div>
+  <div class='displayBlock controlDisplay'>
+			<div>
+        <label>Program Counter:</label>
+        <span id='pc'>00</span>
+      </div>
+			<div>
+        <label>Instruction Register:</label>
+        <span id='ir'>00</span>
+      </div>
+			<div>
+        <label>Start Address:</label>
+   			<span><input type='text' name='start_addr' size=10 /></span>
+			</div>
+		  <div>
+        <label>Status:</label>
+				<span id='status'>hello there</span>
+		  </div>
+  </div>
 
-<div class='displayBlock registers'>
-    <ul id="registers">
+  <div class='displayBlock controlButtons'>
+    <ul>
+    <li><button type='button' id='setm' name='setm'>Set Mem</button></li>
+    <li><button type='button' id='Load' name='Load'>Load</button></li>
+    <li><button type='button' id='Run'  name='Run'>Run</button></li>
+    <li><button type='button' id='Step' name='Step'>Step</button></li>
+    <li><button type='button' id='Clear'name='Clear'>Clear</button></li>
+    <li><button type='button' id='Test' name='Test'>Test</button></li>
     </ul>
-</div>
+  </div>
 
-<div id='memoryBlock' class='displayBlock'>
-</div>
+  <div class='displayBlock debugger'>
+    <label>Debug</label> <br />
+  	<textarea id='debug' name='debug' rows=10></textarea>
+  </div>
+</section>
 
+<section>
+  <div class='displayBlock registers'>
+      <label>Registers</label>
+      <ul id="registers">
+      </ul>
+  </div>
+
+  <div class='displayBlock memoryBlock'>
+    <label>Memory</label>
+    <div id='memoryBlock'>
+    </div>
+  </div>
 </section>
 
 <hr />

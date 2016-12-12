@@ -5,33 +5,34 @@ table {
 }
 
 .controlDisplay {
-    margin-left:40px;
-    display:table;
-    border: 1px solid red;
 }
 
 .controlDisplay div {
-    display:table-cell;
-    border-right: 1px solid green;
-    padding-left:5px;
-    padding-right:5px;
 }
 
-.controlDisplay div span {
+.controlDisplay div span:nth-child(1) {
+  font-weight: bold;
+  padding-right:5px;
+}
+
+.controlDisplay div:not(:first-child) {
+  margin-top:10px;
 }
 
 .controlButtons {
-  margin-left:40px;
-  margin-top:30px;
-  display:table;
+}
+.controlButtons ul {
+  list-style-type: none;
+  margin-left: -30px;
+}
+
+.controlButtons ul li:not(:first-child) {
+  margin-top:10px;
 }
 
 .controlButtons button {
-  display:table-cell;
   background-color:red;
   color:white;
-  margin-right:5px;
-  margin-left:5px;
 }
 
 .registers ul {
@@ -39,8 +40,15 @@ table {
   margin-left: -30px;
 }
 
+.registers label {
+  margin-left: 5px;
+  font-size:larger;
+  font-family:monospace;
+}
+
 section {
   border: 1px solid black;
+  margin-bottom: 20px;
 }
 .displayBlock {
   display:table-cell;
@@ -49,8 +57,33 @@ section {
   border-right : 1px solid red;
 }
 
+#memory label {
+  margin-left: 5px;
+  font-size:larger;
+  font-family:monospace;
+}
+
+.memoryCell {
+  font-size: 12pt;
+  margin-left: 5px;
+  border:1px solid black;
+}
+.registerCell {
+  margin-left: 5px;
+  font-size: 12pt;
+  border:1px solid black;
+}
+
+label {
+  font-weight: bold;
+}
+
 .reading {width: 150; border-style: solid; font-size: 12pt;}
 
 .example {font-family:monospace; align:center; background-color:beige;}
 
 em {font-variant: small-caps; font-style:normal; font-weight: bolder;}
+
+.highlighted {
+  background-color: yellow;
+}
