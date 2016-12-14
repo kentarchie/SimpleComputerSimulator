@@ -1,28 +1,38 @@
 // various utilities
-function hexify(a)
+
+// convert a single decimal digit to hex
+function tohex(d)
 {
-   if( a == "0000") return("0");
-   if( a == "0001") return("1");
-   if( a == "0010") return("2");
-   if( a == "0011") return("3");
-   if( a == "0100") return("4");
-   if( a == "0101") return("5");
-   if( a == "0110") return("6");
-   if( a == "0111") return("7");
-   if( a == "1000") return("8");
-   if( a == "1001") return("9");
-   if( a == "1010") return("A");
-   if( a == "1011") return("B");
-   if( a == "1100") return("C");
-   if( a == "1101") return("D");
-   if( a == "1110") return("E");
-   if( a == "1111") return("F");
+	var hexstring="0123456789ABCDEF";
+	if(d < 16)
+		return hexstring.charAt(d);
+	return '-';
+} // tohex
+
+function hexify(binaryValue)
+{
+   if( binaryValue == "0000") return("0");
+   if( binaryValue == "0001") return("1");
+   if( binaryValue == "0010") return("2");
+   if( binaryValue == "0011") return("3");
+   if( binaryValue == "0100") return("4");
+   if( binaryValue == "0101") return("5");
+   if( binaryValue == "0110") return("6");
+   if( binaryValue == "0111") return("7");
+   if( binaryValue == "1000") return("8");
+   if( binaryValue == "1001") return("9");
+   if( binaryValue == "1010") return("A");
+   if( binaryValue == "1011") return("B");
+   if( binaryValue == "1100") return("C");
+   if( binaryValue == "1101") return("D");
+   if( binaryValue == "1110") return("E");
+   if( binaryValue == "1111") return("F");
    return("00");
 } //hexify
 
-function binify(a)
+function binify(hexValue)
 {
-   switch(a.toLowerCase()) {
+   switch(hexValue.toLowerCase()) {
       case '0' : return("0000");
       case '1' : return("0001");
       case '2' : return("0010");
@@ -42,9 +52,9 @@ function binify(a)
    } // esac
 } //binify
 
-function decify(a)
+function decify(decimalValue)
 {
-   switch(a.toLowerCase()) {
+   switch(decimalValue.toLowerCase()) {
       case '0' : return(0);
       case '1' : return(1);
       case '2' : return(2);
@@ -64,15 +74,15 @@ function decify(a)
    } // esac
 } //decify
 
-function hex_dec(a)
+function hex_dec(hexValue)
 {
-	writedebug("hexdec a = :" + a + ":");
-   if(a.length > 1) {
-      var d1=decify(a.slice(0,1));
-      var d2=decify(a.slice(1,2));
-      return(((d1-0) * 16) + (d2-0)); 
+	writedebug("hexdec hexValue = :" + hexValue + ":");
+   if(hexValue.length > 1) {
+      var d1=decify(hexValue.slice(0,1));
+      var d2=decify(hexValue.slice(1,2));
+      return(((d1-0) * 16) + (d2-0));
    }
    else {
-      return(decify(a.slice(0,1))); 
+      return(decify(hexValue.slice(0,1)));
    }
 } // hex_dec
