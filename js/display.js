@@ -45,23 +45,14 @@ function set_status(str)
 
 function writedebug(str)
 {
-   var debug = document.getElementById('debug');
-	debug.value += "\n" + str;
+   var oldStr = $('#debug').innerHTML;
+	 $('debug').innerHTML = oldStr + "\n" + str;
 } // writedebug
-
-function showregs()
-{
-  var memstr="";
-  for(i=0;i<NumRegs;i++) {
-     memstr = memstr + (i).toString(16) + ": " + Registers[i] + "\n";
-  } // inner for
-  document.program.regs.value=memstr;
-} // showregs
 
 function clearit()
 {
    init();
-   document.program.prog.value="";
+   $('#prog').value("");
    set_status("");
 }
 
@@ -111,15 +102,6 @@ function chgmem()
    x = document.getElementById('newmem');
    x.style.visibility = 'hidden';  // make invisible
 } // chgmem
-
-// convert a single decimal digit to hex
-function tohex(d)
-{
-	var hexstring="0123456789ABCDEF";
-	if(d < 16)
-		return hexstring.charAt(d);
-	return '-';
-} // tohex
 
 function makemem()
 {
