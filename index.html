@@ -7,45 +7,45 @@
 <body>
 
 <div id='newmem' style='display:none'>
-			New memory value <br />
-			<input type='text' name='memchange' size=5 /> <br />
-      <button type='button' id='memtxt' name='memtxt' onClick='chgmem();'>Change</button>
-			<input type='hidden' value='mem0' name='whichcell' />
+		New memory value <br />
+		<input type='text' name='memchange' size=5 /> <br />
+        <button type='button' id='memtxt' name='memtxt'>Change</button>
+		<input type='hidden' value='mem0' name='whichcell' />
 </div>
 
 <section>
   <div class='displayBlock codeEntry'>
       <label>Program Text</label><br />
-     	<textarea id='prog' name='prog' rows=10 cols=8></textarea>
+      <textarea id='prog' name='prog' rows=10 cols=8></textarea>
   </div>
 
   <div class='displayBlock controlDisplay'>
-			<div>
+      <div>
         <label>Program Counter:</label>
         <span id='pc'>00</span>
       </div>
-			<div>
+      <div>
         <label>Instruction Register:</label>
         <span id='ir'>00</span>
       </div>
-			<div>
+      <div>
         <label>Start Address:</label>
-   			<span><input type='text' name='start_addr' size=10 /></span>
-			</div>
-		  <div>
+   		<span><input type='text' name='start_addr' size=10 /></span>
+      </div>
+      <div>
         <label>Status:</label>
-				<span id='status'>hello there</span>
-		  </div>
+		<span id='status'>hello there</span>
+      </div>
   </div>
 
   <div class='displayBlock controlButtons'>
     <ul>
-    <li><button type='button' id='setm' name='setm'>Set Mem</button></li>
-    <li><button type='button' id='Load' name='Load'>Load</button></li>
-    <li><button type='button' id='Run'  name='Run'>Run</button></li>
-    <li><button type='button' id='Step' name='Step'>Step</button></li>
-    <li><button type='button' id='Clear'name='Clear'>Clear</button></li>
-    <li><button type='button' id='Test' name='Test'>Test</button></li>
+        <li><button type='button' id='setm' name='setm'>Set Mem</button></li>
+        <li><button type='button' id='Load' name='Load'>Load</button></li>
+        <li><button type='button' id='Run'  name='Run'>Run</button></li>
+        <li><button type='button' id='Step' name='Step'>Step</button></li>
+        <li><button type='button' id='Clear'name='Clear'>Clear</button></li>
+        <li><button type='button' id='Test' name='Test'>Test</button></li>
     </ul>
   </div>
 
@@ -71,13 +71,13 @@
 
 <hr />
     Try it out and please send comments or bugs to
-    <a href='mailto:depaul@archie-perkins.com'>depaul@archie-perkins.com</a>.
-
+    <a href='mailto:kentarchie+machine@gmail.com'>kentarchie+machine@gmail.com</a>.
       <script type='text/javascript' src='js/jquery-3.1.1.min.js'></script>
+      <script type='text/javascript' src='js/machineStart.js'></script>
       <script type='text/javascript' src='js/machine.js'></script>
-      <script type='text/javascript' src='js/util.js'></script>
-      <script type='text/javascript' src='js/display.js'></script>
       <script type='text/javascript' src='js/machinstr.js'></script>
+      <script type='text/javascript' src='js/display.js'></script>
+      <script type='text/javascript' src='js/util.js'></script>
       <script type='text/javascript' src='js/commands.js'></script>
   </body>
 </html>

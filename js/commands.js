@@ -1,24 +1,24 @@
 // user level commands
-function loadit()
+function loadProgram()
 {
-   set_status("Program Loading");
-   var prog=document.program.prog.value;
-   var start=document.program.start_addr.value - 0;
-   var code=prog.split("\n");
-	var mem;
-   init();
-   for(i=0;i<code.length;i++) {
-   	mem = document.getElementById("mem" + (start + (i*2)));
-      mem.innerHTML = code[i].slice(0,2);
-   	mem = document.getElementById("mem" + (start + (i*2)+1));
-      mem.innerHTML = code[i].slice(2,4);
-   }
-   setPC(document.program.start_addr.value);
-   Runflag=true;
-   set_status("Program Loaded");
-} // loadit
+    set_status("Program Loading");
+    var prog=document.program.prog.value;
+    var start=document.program.start_addr.value - 0;
+    var code=prog.split("\n");
+    var mem;
+    init();
+    for(i=0;i<code.length;i++) {
+   	    mem = document.getElementById("mem" + (start + (i*2)));
+        mem.innerHTML = code[i].slice(0,2);
+   	    mem = document.getElementById("mem" + (start + (i*2)+1));
+        mem.innerHTML = code[i].slice(2,4);
+    }
+    setPC(document.program.start_addr.value);
+    Runflag=true;
+    set_status("Program Loaded");
+} // loadProgram
 
-function runit()
+function runProgram()
 {
    var addr;
    while(Runflag) {
@@ -28,7 +28,7 @@ function runit()
       execute(getIR());
    }
    set_status("Program Ended");
-} //runit
+} //runProgram
 
 function stepit()
 {
