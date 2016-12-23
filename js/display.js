@@ -101,16 +101,17 @@ function makemem()
   memTable.innerHTML = str;
 } // makemem
 
-function makeregcol()
+function makeRegisterDisplay()
 {
-	var i,id,label,sp;
-  var regs = document.getElementById('registers');
+  console.log('makeRegisterDisplay: START');
+	var id,label,sp;
   var str = "";
-	for(i=0;i<NumRegs; i++) {
-   	id= "r" + i;
-   	label = '<label>'+"R" + tohex(i) + ":" + '</label>';
-   	sp = " <span class='registerCell' id='" + id + "' onClick = 'clicked(this);'>00</span>";
-   	str+= "<li width=40>" + label + sp + "</li>\n";
+	for(var i=0; i<NumRegs; i++) {
+   	id = "r" + i;
+   	label = '<label>'+'R' + tohex(i) + ':' + '</label>';
+   	sp = " <span class='registerCell' id='" + id + "'>00</span>";
+   	str+= "<li>" + label + sp + "</li>\n";
 	} // for
-  regs.innerHTML = str;
-} // makeregcol
+  $('#registers').html(str);
+  console.log('makeRegisterDisplay: DONE');
+} // makeRegisterDisplay

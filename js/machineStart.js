@@ -6,23 +6,29 @@ var MemCols=16; // number of memory display columns
 var NumMemCells = MemRows * MemCols;  // total size of memory
 var NumRegs=16;
 
+$(document).ready(function() {
+	init();
+});
+
 function init()
 {
-   for(i=0;i<NumRegs;i++) Registers[i]="00";
-   for(i=0;i<NumMemCells;i++) Memory[i]="00";
-   var pc = document.getElementById('pc');
-   pc.innerHTML="00";
-   var ir = document.getElementById('ir');
-   ir.innerHTML="00";
-   makeregcol();
+  console.log('init: START');
+   for(i=0;i<NumRegs;i++) Registers[i] = '00';
+   for(i=0;i<NumMemCells;i++) Memory[i] = '00';
+   $('#pc').html("00");
+   $('#ir').html("00");
+  console.log('init: before makeRegisterDisplay');
+   makeRegisterDisplay();
    makemem();
 
    // register control buttons
-  $('setm').click(setmem);
-  $('Load').click(loadProgram);
-  $('Run').click(loadProgram);
-  $('Step').click(stepit);
-  $('Clear').click(clearit);
-  $('memtxt').click(chgmem);
-  //$('Test').click(Test);
+  $('#registers').on('dblclick',"span[class='registerCell']",registerUpdate);
+  $('#setm').click(setmem);
+  $('#Load').click(loadProgram);
+  $('#Run').click(loadProgram);
+  $('#Step').click(stepit);
+  $('#Clear').click(clearit);
+  $('#memtxt').click(chgmem);
+  //$('#Test').click(Test);
+  console.log('init: DONE');
 } // init

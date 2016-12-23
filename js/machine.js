@@ -1,6 +1,3 @@
-$(document).ready(function() {
-	init();
-});
 
 // check the range of the value
 function checkVrange(v)
@@ -98,7 +95,7 @@ function getIR()
 var Instructions = {
 	'1' : {
 			'mnemonic' : 'LOADREG'
-			'operand' : "RXY"
+			,'operand' : "RXY"
 			,'op' : function() {
          		setreg(hex_dec(instr.slice(1,2)),getmem(hex_dec(instr.slice(2,4))));
          		set_status("load R" + instr.slice(1,2) + " from mem(" + instr.slice(2,4) + ")");
@@ -108,7 +105,7 @@ var Instructions = {
 	}
 	,'2' : {
 			'mnemonic' : 'LOADBITS'
-			'operand' : "RXY"
+			,'operand' : "RXY"
 			,'op' : function() {
          		setreg(hex_dec(instr.slice(1,2)),instr.slice(2,4));
          		set_status("Set R" + instr.slice(1,2) + " to " + instr.slice(2,4));
@@ -118,7 +115,7 @@ var Instructions = {
 	}
 	,'3' : {
 			'mnemonic' : 'STORE'
-			'operand' : "RXY"
+			,'operand' : "RXY"
 			,'op' : function() {
 				setmem(hex_dec(instr.slice(2,4)),getreg(hex_dec(instr.slice(1,2))));
 				set_status("Store R" + instr.slice(1,2) + " to mem(" + instr.slice(2,4) + ")");
@@ -128,7 +125,7 @@ var Instructions = {
 	}
 	,'4' : {
 			'mnemonic' : 'MOVE'
-			'operand' : "0RS"
+			,'operand' : "0RS"
 			,'op' : function() {
 				setreg(hex_dec(instr.slice(3,4)), getreg(hex_dec(instr.slice(2,3))));
 		 		set_status("Copy R" + instr.slice(3,4) + " to R" + instr.slice(2,3));
@@ -138,7 +135,7 @@ var Instructions = {
 	}
 	,'5' : {
 			'mnemonic' : 'ADDINT'
-			'operand' : "RST"
+			,'operand' : "RST"
 			,'op' : function() {
 				var ires=twos_add(getreg(hex_dec(instr.slice(3,4))),getreg(hex_dec(instr.slice(2,3))));
 				setreg(hex_dec(instr.slice(1,2)),ires);
@@ -149,7 +146,7 @@ var Instructions = {
 	}
 	,'6' : {
 			'mnemonic' : 'ADDFLOAT'
-			'operand' : "RST"
+			,'operand' : "RST"
 			,'op' : function() {
          		var fres=float_add(getreg(hex_dec(instr.slice(3,4))),getreg(hex_dec(instr.slice(2,3))));
          		setreg(hex_dec(instr.slice(1,2)),fres);
@@ -160,7 +157,7 @@ var Instructions = {
 	}
 	,'7' : {
 			'mnemonic' : 'OR'
-			'operand' : "RST"
+			,'operand' : "RST"
 			,'op' : function() {
          		var left=getreg(hex_dec(instr.slice(3,4)));
          		var right=getreg(hex_dec(instr.slice(2,3)));
@@ -172,7 +169,7 @@ var Instructions = {
 	}
 	,'8' : {
 			'mnemonic' : 'AND'
-			'operand' : "RST"
+			,'operand' : "RST"
 			,'op' : function() {
          		var left=getreg(hex_dec(instr.slice(3,4)));
          		var right=getreg(hex_dec(instr.slice(2,3)));
@@ -184,7 +181,7 @@ var Instructions = {
 	}
 	,'9' : {
 			'mnemonic' : 'XOR'
-			'operand' : "RST"
+			,'operand' : "RST"
 			,'op' : function() {
          		var left=getreg(hex_dec(instr.slice(3,4)));
          		var right=getreg(hex_dec(instr.slice(2,3)));
@@ -197,7 +194,7 @@ var Instructions = {
 	}
 	,'A' : {
 			'mnemonic' : 'ROTATE'
-			'operand' : "R0X"
+			,'operand' : "R0X"
 			,'op' : function() {
          		var res=rotate(instr.slice(1,2),instr.slice(3,4));
          		setreg(hex_dec(instr.slice(1,2)),res);
@@ -208,7 +205,7 @@ var Instructions = {
 	}
 	,'B' : {
 			'mnemonic' : 'JUMP'
-			'operand' : "RXY"
+			,'operand' : "RXY"
 			,'op' : function() {
          		var rn=getreg(hex_dec(instr.slice(1,2)));
          		var r0=getreg(0);
@@ -221,7 +218,7 @@ var Instructions = {
 	}
 	,'C' : {
 			'mnemonic' : 'HALT'
-			'operand' : "000"
+			,'operand' : "000"
 			,'op' : function() {
          		Runflag = false;
          		set_status("Program halted");
@@ -238,3 +235,10 @@ function execute(instr)
    switch((instr.slice(0,1)).toUpperCase()) {
    } // esac
 } // execute
+
+function registerUpdate(ev)
+{
+		console.log('registerUpdate: START')
+		console.log('registerUpdate: id=:'+this.id+':');
+		//console.log('registerUpdate: ev=:'+JSON.stringify(ev,null,'\n')+':')
+} // registerUpdate
