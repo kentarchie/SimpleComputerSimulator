@@ -238,7 +238,14 @@ function execute(instr)
 
 function registerUpdate(ev)
 {
-		console.log('registerUpdate: START')
-		console.log('registerUpdate: id=:'+this.id+':');
-		//console.log('registerUpdate: ev=:'+JSON.stringify(ev,null,'\n')+':')
+	console.log('registerUpdate: START')
+	console.log('registerUpdate: id=:'+this.id+':');
+	//console.log('registerUpdate: ev=:'+JSON.stringify(ev,null,'\n')+':')
 } // registerUpdate
+
+function memoryUpdate(ev)
+{
+	console.log('memoryUpdate: START')
+	console.log('memoryUpdate: id=:'+this.id+':');
+	//console.log('memoryUpdate: ev=:'+JSON.stringify(ev,null,'\n')+':')
+} // memoryUpdate

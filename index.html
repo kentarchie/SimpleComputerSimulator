@@ -22,19 +22,19 @@
   <div class='displayBlock controlDisplay'>
       <div>
         <label>Program Counter:</label>
-        <span id='pc'>00</span>
+        <span id='programCounter'>00</span>
       </div>
       <div>
         <label>Instruction Register:</label>
-        <span id='ir'>00</span>
+        <span id='instructionRegister'>00</span>
       </div>
       <div>
         <label>Start Address:</label>
-   		<span><input type='text' name='start_addr' size=10 /></span>
+   	<span><input type='text' id='startAddress' nname='startAddress' size=10 /></span>
       </div>
       <div>
         <label>Status:</label>
-		<span id='status'>hello there</span>
+	<span id='status'>hello there</span>
       </div>
   </div>
 
@@ -51,7 +51,7 @@
 
   <div class='displayBlock debugger'>
     <label>Debug</label> <br />
-  	<textarea id='debug' name='debug' rows=10></textarea>
+    <textarea id='debug' name='debug' rows=10></textarea>
   </div>
 </section>
 
@@ -68,6 +68,36 @@
     </div>
   </div>
 </section>
+
+<div class='memoryEdit'>
+    <div>
+	<span>
+	<span> </span>
+	</span>
+    </div>
+    <div>
+	<input type='text' size=4 />
+    </div>
+</div>
+
+<hr />
+    Try it out and please send comments or bugs to
+    <a href='mailto:kentarchie+machine@gmail.com'>kentarchie+machine@gmail.com</a>.
+      <script type='text/javascript' src='js/jquery-3.1.1.min.js'></script>
+      <script type='text/javascript' src='js/machineStart.js'></script>
+      <script type='text/javascript' src='js/machine.js'></script>
+      <script type='text/javascript' src='js/machinstr.js'></script>
+      <script type='text/javascript' src='js/display.js'></script>
+      <script type='text/javascript' src='js/util.js'></script>
+      <script type='text/javascript' src='js/commands.js'></script>
+  </body>
+</html>
+	</span>
+    </div>
+    <div>
+	<input type='text' size=4 />
+    </div>
+</div>
 
 <hr />
     Try it out and please send comments or bugs to

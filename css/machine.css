@@ -87,3 +87,7 @@ em {font-variant: small-caps; font-style:normal; font-weight: bolder;}
 .highlighted {
   background-color: yellow;
 }
+
+.memoryEdit {
+	position:relative;
+}

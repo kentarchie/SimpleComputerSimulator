@@ -17,12 +17,13 @@ function init()
    for(i=0;i<NumMemCells;i++) Memory[i] = '00';
    $('#pc').html("00");
    $('#ir').html("00");
-  console.log('init: before makeRegisterDisplay');
+   console.log('init: before makeRegisterDisplay');
    makeRegisterDisplay();
-   makemem();
+   makeMemoryDisplay();
 
    // register control buttons
   $('#registers').on('dblclick',"span[class='registerCell']",registerUpdate);
+  $('#memoryBlock').on('dblclick',"span[class='memoryCell']",memoryUpdate);
   $('#setm').click(setmem);
   $('#Load').click(loadProgram);
   $('#Run').click(loadProgram);

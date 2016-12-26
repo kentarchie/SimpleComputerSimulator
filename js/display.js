@@ -76,42 +76,37 @@ function chgmem()
    x.style.visibility = 'hidden';  // make invisible
 } // chgmem
 
-function makemem()
+function makeMemoryDisplay()
 {
-	var num,id,label,sp;
-  var str="";
-  var memTable = document.getElementById("memoryBlock");
-	str += "<table id='memory'>\n";
+	var str = "<table id='memory'>\n";
 	for(var row=0;row<MemRows; row++) {
-    str += '<tr>';
-	  for(var col=0; col< MemCols ; col++) {
-       str += '<td>';
-		     // unique, sequential memory cell ids
-		     num=col + (MemRows * row);
-		     id="mem" + num;
-   	     label = tohex(row) + "" + tohex(col) + ":";
-   	     sp = "<span class='memoryCell' id='" + id + "' onClick = 'clicked(this);'>00</span>";
-   	     str += "<label>"+label+"</label>";
-   	     str +=  sp;
-       str += '</td>';
-	  } // for
-    str += '</tr>';
-  }
+    	str += '<tr>';
+	  	for(var col=0; col< MemCols ; col++) {
+       		str += '<td>';
+		    // unique, sequential memory cell ids
+		    var num=col + (MemRows * row);
+		    var id="mem" + num;
+   	     	var label = tohex(row) + "" + tohex(col) + ":";
+   	     	str += "<label>"+label+"</label>";
+   	     	str += "<span class='memoryCell' id='" + id + "'>00</span>";
+       		str += '</td>';
+	  	} // for
+    	str += '</tr>';
+  	} // for
 	str += '</table>\n';
-  memTable.innerHTML = str;
-} // makemem
+  	$("#memoryBlock").html(str);
+} // makeMemoryDisplay
 
 function makeRegisterDisplay()
 {
-  console.log('makeRegisterDisplay: START');
-	var id,label,sp;
-  var str = "";
+  	console.log('makeRegisterDisplay: START');
+  	var str = "";
 	for(var i=0; i<NumRegs; i++) {
-   	id = "r" + i;
-   	label = '<label>'+'R' + tohex(i) + ':' + '</label>';
-   	sp = " <span class='registerCell' id='" + id + "'>00</span>";
-   	str+= "<li>" + label + sp + "</li>\n";
+		var id = "r" + i;
+		var label = '<label>'+'R' + tohex(i) + ':' + '</label>';
+		var sp = " <span class='registerCell' id='" + id + "'>00</span>";
+		str+= "<li>" + label + sp + "</li>\n";
 	} // for
-  $('#registers').html(str);
-  console.log('makeRegisterDisplay: DONE');
+  	$('#registers').html(str);
+  	console.log('makeRegisterDisplay: DONE');
 } // makeRegisterDisplay

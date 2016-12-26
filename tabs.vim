@@ -1,3 +1,4 @@
+tabe js/machineStart.js
 tabe js/machine.js
 tabe js/display.js
 tabe js/commands.js
