@@ -24,12 +24,13 @@ function init()
    // register control buttons
   $('#registers').on('dblclick',"span[class='registerCell']",registerUpdate);
   $('#memoryBlock').on('dblclick',"span[class='memoryCell']",memoryUpdate);
-  $('#setm').click(setmem);
-  $('#Load').click(loadProgram);
-  $('#Run').click(loadProgram);
-  $('#Step').click(stepit);
-  $('#Clear').click(clearit);
-  $('#memtxt').click(chgmem);
-  //$('#Test').click(Test);
+  $( '.memoryEdit' ).draggable();
+  $('#setm').on('click',setmem);
+  $('#Load').on('click',loadProgram);
+  $('#Run').on('click',loadProgram);
+  $('#Step').on('click',stepit);
+  $('#Clear').on('click',clearit);
+  $('#memtxt').on('click',chgmem);
+  //$('#Test').on('click',Test);
   console.log('init: DONE');
 } // init

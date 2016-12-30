@@ -89,5 +89,23 @@ em {font-variant: small-caps; font-style:normal; font-weight: bolder;}
 }
 
 .memoryEdit {
+	position:absolute;
+    top:30px; left:100px;
+    width:10%;
+    background-color: yellow;
+    cursor:grab;
+}
+
+.regEditTitle {
 	position:relative;
+    width:100%
+    text-align:center;
+    font-variant:small-caps;
+}
+
+.memoryEdit div {
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    width:50%
 }
