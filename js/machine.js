@@ -240,7 +240,9 @@ function registerUpdate(ev)
 {
 	console.log('registerUpdate: START')
 	console.log('registerUpdate: id=:'+this.id+':');
+	$('#memoryUpdate').show();
 	//console.log('registerUpdate: ev=:'+JSON.stringify(ev,null,'\n')+':')
+	console.log('registerUpdate: DONE')
 } // registerUpdate
 
 function memoryUpdate(ev)

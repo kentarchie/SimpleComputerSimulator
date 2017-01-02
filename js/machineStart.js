@@ -17,6 +17,8 @@ function init()
    for(i=0;i<NumMemCells;i++) Memory[i] = '00';
    $('#pc').html("00");
    $('#ir').html("00");
+   $('#memoryEdit').hide();
+
    console.log('init: before makeRegisterDisplay');
    makeRegisterDisplay();
    makeMemoryDisplay();
@@ -24,7 +26,11 @@ function init()
    // register control buttons
   $('#registers').on('dblclick',"span[class='registerCell']",registerUpdate);
   $('#memoryBlock').on('dblclick',"span[class='memoryCell']",memoryUpdate);
-  $( '.memoryEdit' ).draggable();
+
+  $('.closeButton').on('click',saveMemory);
+  $('.exitButton').on('click',cancelMemoryUpdate);
+  $('.memoryEdit' ).draggable();
+
   $('#setm').on('click',setmem);
   $('#Load').on('click',loadProgram);
   $('#Run').on('click',loadProgram);

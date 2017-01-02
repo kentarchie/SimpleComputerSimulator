@@ -37,6 +37,18 @@ function clearit()
 	This routine stores the id of the clicked cell in a form variable
 	and makes the box and button visible.
 */
+function startMemoryUpdate(ev)
+{
+} // startMemoryUpdate
+
+function saveMemory(ev)
+{
+} // saveMemory
+
+function cancelMemoryUpdate(ev)
+{
+} // cancelMemoryUpdate
+
 function clicked(cell)
 {
 	// just in case, we will clear the background of the
