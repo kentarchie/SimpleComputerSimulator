@@ -100,7 +100,7 @@ function makeMemoryDisplay()
 		    var id="mem" + num;
    	     	var label = tohex(row) + "" + tohex(col) + ":";
    	     	str += "<label>"+label+"</label>";
-   	     	str += "<span class='memoryCell' id='" + id + "'>00</span>";
+   	     	str += "<div contenteditable='true' class='memoryCell' id='" + id + "'>00</div>";
        		str += '</td>';
 	  	} // for
     	str += '</tr>';
@@ -116,7 +116,7 @@ function makeRegisterDisplay()
 	for(var i=0; i<NumRegs; i++) {
 		var id = "r" + i;
 		var label = '<label>'+'R' + tohex(i) + ':' + '</label>';
-		var sp = " <span class='registerCell' id='" + id + "'>00</span>";
+		var sp = " <div contenteditable='true' class='registerCell' id='" + id + "'>00</div>";
 		str+= "<li>" + label + sp + "</li>\n";
 	} // for
   	$('#registers').html(str);
