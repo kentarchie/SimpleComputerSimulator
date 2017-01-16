@@ -34,7 +34,6 @@ function init()
   $('#Run').on('click',loadProgram);
   $('#Step').on('click',stepit);
   $('#Clear').on('click',clearit);
-  $('#memtxt').on('click',chgmem);
   //$('#Test').on('click',Test);
   console.log('init: DONE');
 } // init

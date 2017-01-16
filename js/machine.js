@@ -1,96 +1,97 @@
 
 // check the range of the value
-function checkVrange(v)
+function valueInRange(v)
 {
-		if( (v < 0) || (v > 255)) {
-			set_status("Memory Fault: trying to store " + v + " at memory " + m);
-			return false;
-		}
-		return true;
-} // checkVrange
+	if( (v < 0) || (v > 255)) {
+		set_status("valueInRange Fault: value " + v + " ot of range");
+		return false;
+	}
+	return true;
+} // valueInRange
 
 // check the range of the memory address
-function checkMrange(m)
+function isMemoryFault(m)
 {
-		if( (m < 0) || (m >= NumMemCells)) {
-			set_status("Memory Fault: trying to access memory location" + m);
-			return false;
-		}
-		return true;
-} // checkMrange
+	if( (m < 0) || (m >= NumMemCells)) {
+		set_status("isMemoryFault: Memory Fault: trying to access memory location" + m);
+		return false;
+	}
+	return true;
+} // isMemoryFault
 
 // check the range of the Register number
-function checkRrange(r)
+function registerInRange(r)
 {
-		if( (r < 0) || (r >= NumRegs)) {
-			set_status("Register Fault: trying to access Register " + r);
-			return false;
-		}
-		return true;
-} // checkRrange
+	if( (r < 0) || (r >= NumRegs)) {
+		set_status("Register Fault: trying to access Register " + r);
+		return false;
+	}
+	return true;
+} // registerInRange
 
-// set memory location m to the value v
-function setmem(m,v)
+// set memory location address to the value value
+function setMemory(address,value)
 {
-		if(!checkVrange(v)) return;
-		if(!checkMrange(m)) return;
-   	var mem = document.getElementById("mem" + m );
-		mem.innerHTML = v;
-} // setmem
+	if(!valueInRange(value)) return;
+	if(!isMemoryFault(address)) return;
+	$("#mem" + address ).html(value);
+} // setMemory
 
-// return the value at memory location m
-function getmem(m)
+// return the value at memory location address
+function getMemory(address)
 {
-		if(!checkMrange(m)) return;
-   	var mem = document.getElementById("mem" + m );
-		return mem.innerHTML;
-} // getmem
+	if(!isMemoryFault(address)) return;
+	return $("#mem" + address ).html();
+} // getMemory
 
-// set Register r to the value v
-function setreg(r,v)
+// set Register reg to the value value
+function setRegister(reg,value)
 {
-		if(!checkVrange(v)) return;
-		if(!checkRrange(r)) return;
-   	var reg = document.getElementById("r" + r );
-		reg.innerHTML = v;
-} // setreg
+	if(!valueInRange(value)) return;
+	if(!registerInRange(reg)) return;
+	$("#r" + reg ).html(value);
+} // setRegister
 
-// return the value of Register m as an integer
-function getreg(r)
+// return the value of Register reg as an integer
+function getRegister(reg)
 {
-		if(!checkRrange(r)) return;
-   	var reg = document.getElementById("r" + r );
-		return reg.innerHTML - 0; // convert from string to number
-} // getreg
+	if(!registerInRange(reg)) return;
+	$("#r" + reg ).html() - 0; // convert from string to number
+} // getRegister
 
-// set PC to the value v
-function setPC(v)
+// set PC to the value value
+function setProgramCounter(value)
 {
-		if(!checkVrange(v)) return;
-   	var pc = document.getElementById("pc");
-		pc.innerHTML = v;
-} // setPC
+	if(!valueInRange(value)) return;
+	$("#pc").html(value);
+} // setProgramCounter
 
 // return the value of PC as an integer
-function getPC()
+function getProgramCounter()
 {
-   	var pc = document.getElementById("pc");
-		return pc.innerHTML;
-} // getPC
+	return $("#pc").html();
+} // getProgramCounter
 
-// set IR to the string value v
-function setIR(v)
+// set IR to the string value value
+function setInstructionRegister(value)
 {
-   	var ir = document.getElementById("ir");
-		ir.innerHTML = v;
-} // setIR
+	if(!valueInRange(value)) return;
+	$("#ir").html(value);
+} // setInstructionRegister
 
 // return the value of IR as an string
-function getIR()
+function getInstructionRegister()
 {
-   	var ir = document.getElementById("ir");
-		return ir.innerHTML;
-} // getIR
+	$("#ir").html();
+} // getInstructionRegister
+
+// implements the machine
+function execute(instr)
+{
+	writedebug("instr = :" + instr + ":");
+	switch((instr.slice(0,1)).toUpperCase()) {
+	} // esac
+} // execute
 
 var Instructions = {
 	'1' : {
@@ -227,27 +228,3 @@ var Instructions = {
 			,'example' : "C000 would cause the program execution to stop"
 	}
 }; // Instructions
-
-// implements the machine
-function execute(instr)
-{
-	writedebug("instr = :" + instr + ":");
-   switch((instr.slice(0,1)).toUpperCase()) {
-   } // esac
-} // execute
-
-function registerUpdate(ev)
-{
-	console.log('registerUpdate: START')
-	console.log('registerUpdate: id=:'+this.id+':');
-	$('#memoryUpdate').show();
-	//console.log('registerUpdate: ev=:'+JSON.stringify(ev,null,'\n')+':')
-	console.log('registerUpdate: DONE')
-} // registerUpdate
-
-function memoryUpdate(ev)
-{
-	console.log('memoryUpdate: START')
-	console.log('memoryUpdate: id=:'+this.id+':');
-	//console.log('memoryUpdate: ev=:'+JSON.stringify(ev,null,'\n')+':')
-} // memoryUpdate
