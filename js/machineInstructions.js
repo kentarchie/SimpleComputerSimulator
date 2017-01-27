@@ -1,13 +1,13 @@
 // actual machine instructions
 
-function rotate(reg,amount)
+function rotate(register,amount)
 {
    var bit,v;
-   var regstr=Registers[hex_dec(reg)];
+   var regstr=Registers[hex_dec(register)];
    var value=binify(regstr.slice(0,1)) + binify(regstr.slice(1,2));
-   for(i=0;i<hex_dec(amount);i++) {
-      bit=value.charAt(7);
-      v=bit+value.slice(0,7);
+   for(var i=0;i<hex_dec(amount);i++) {
+      var bit=value.charAt(7);
+      var v=bit+value.slice(0,7);
       value=v;
    } // for
    return(hexify(value.slice(0,4)) + hexify(value.slice(4,8)));
@@ -18,7 +18,7 @@ function xor(a,b)
    var r,l,res="";
    var left=binify(a.slice(0,1)) + binify(a.slice(1,2));
    var right=binify(b.slice(0,1)) + binify(b.slice(1,2));
-   for(i=0;i<8;i++) {
+   for(var i=0;i<8;i++) {
       l=left.charAt(i)-0; r=right.charAt(i)-0;
       if((r+l) == 0) res = res + "0";
       if((r+l) == 1) res = res + "1";
@@ -35,9 +35,9 @@ function twos_add(a,b)
    for(i=7;i>=0;i--) {
       l=left.charAt(i)-0; r=right.charAt(i)-0;
       if((r+l) == 0) {res = res + carry; carry=0;}
-      if((r+l) == 1) 
-	 if(carry == 1) res = res + "0"; 
-	 else res = res + "1"; 
+      if((r+l) == 1)
+	 if(carry == 1) res = res + "0";
+	 else res = res + "1";
       if((r+l) == 2) {
 	 if(carry == 1) {
             res = res + "1"; carry = 1;
@@ -45,7 +45,7 @@ function twos_add(a,b)
 	 else {
             res = res + "0"; carry = 1;
 	 }
-      } 
+      }
    } // for
    // reverse the string
    for(i=7;i>=0;i--) {

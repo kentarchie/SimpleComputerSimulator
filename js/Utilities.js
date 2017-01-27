@@ -1,15 +1,18 @@
 // various utilities
+function Utilities()
+{
+}
 
 // convert a single decimal digit to hex
-function tohex(d)
+Utilities.toHex = function(d)
 {
 	var hexstring="0123456789ABCDEF";
-	if(d < 16)
+	if((d>=0) && (d < 16))
 		return hexstring.charAt(d);
 	return '-';
 } // tohex
 
-function hexify(binaryValue)
+Utilities.hexify = function(binaryValue)
 {
    if( binaryValue == "0000") return("0");
    if( binaryValue == "0001") return("1");
@@ -30,7 +33,7 @@ function hexify(binaryValue)
    return("00");
 } //hexify
 
-function binify(hexValue)
+Utilities.binify = function(hexValue)
 {
    switch(hexValue.toLowerCase()) {
       case '0' : return("0000");
@@ -52,7 +55,7 @@ function binify(hexValue)
    } // esac
 } //binify
 
-function decify(decimalValue)
+Utilities.decify = function(decimalValue)
 {
    switch(decimalValue.toLowerCase()) {
       case '0' : return(0);
@@ -74,7 +77,7 @@ function decify(decimalValue)
    } // esac
 } //decify
 
-function hex_dec(hexValue)
+Utilities.hexToDecimal = function(hexValue)
 {
 	writedebug("hexdec hexValue = :" + hexValue + ":");
    if(hexValue.length > 1) {
@@ -85,4 +88,4 @@ function hex_dec(hexValue)
    else {
       return(decify(hexValue.slice(0,1)));
    }
-} // hex_dec
+} // hexToDecimal
