@@ -6,7 +6,7 @@ function Utilities()
 // convert a single decimal digit to hex
 Utilities.toHex = function(d)
 {
-	var hexstring="0123456789ABCDEF";
+	var hexstring = '0123456789ABCDEF';
 	if((d>=0) && (d < 16))
 		return hexstring.charAt(d);
 	return '-';
@@ -14,24 +14,33 @@ Utilities.toHex = function(d)
 
 Utilities.hexify = function(binaryValue)
 {
-   if( binaryValue == "0000") return("0");
-   if( binaryValue == "0001") return("1");
-   if( binaryValue == "0010") return("2");
-   if( binaryValue == "0011") return("3");
-   if( binaryValue == "0100") return("4");
-   if( binaryValue == "0101") return("5");
-   if( binaryValue == "0110") return("6");
-   if( binaryValue == "0111") return("7");
-   if( binaryValue == "1000") return("8");
-   if( binaryValue == "1001") return("9");
-   if( binaryValue == "1010") return("A");
-   if( binaryValue == "1011") return("B");
-   if( binaryValue == "1100") return("C");
-   if( binaryValue == "1101") return("D");
-   if( binaryValue == "1110") return("E");
-   if( binaryValue == "1111") return("F");
-   return("00");
+  if(  binaryValue == '0000') return('0');
+   if( binaryValue == '0001') return('1');
+   if( binaryValue == '0010') return('2');
+   if( binaryValue == '0011') return('3');
+   if( binaryValue == '0100') return('4');
+   if( binaryValue == '0101') return('5');
+   if( binaryValue == '0110') return('6');
+   if( binaryValue == '0111') return('7');
+   if( binaryValue == '1000') return('8');
+   if( binaryValue == '1001') return('9');
+   if( binaryValue == '1010') return('A');
+   if( binaryValue == '1011') return('B');
+   if( binaryValue == '1100') return('C');
+   if( binaryValue == '1101') return('D');
+   if( binaryValue == '1110') return('E');
+   if( binaryValue == '1111') return('F');
+   return('-');
 } //hexify
+
+Utilities.hexToBinary = function(hexValueAsString)
+{
+	console.log('Utilities.hexToBinary: hexValue=:'+hexValue+':')
+	var hexValue = parseInt(hexValueAsString,16);
+	var res = hexValue.toString(2);
+	console.log('Utilities.hexToBinary: res=:'+res+':')
+	return res;
+}  // hexToBinary
 
 Utilities.binify = function(hexValue)
 {
