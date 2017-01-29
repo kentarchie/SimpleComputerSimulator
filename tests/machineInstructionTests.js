@@ -1,33 +1,15 @@
-QUnit.module( "Utilities: toHex Tests");
-
-QUnit.test( "decimal to hex: 10 -> A", function( assert ) {
-  var hexValue = Utilities.toHex(10);
-  console.log('toHex : hexValue =:'+hexValue+':');
-  assert.deepEqual( hexValue , "A", "Passed!" );
+QUnit.module( "Utilities: isGoodHex Tests");
+QUnit.test( "A", function( assert ) {
+  assert.ok( Utilities.isGoodHexDigit('A') , "Passed!" );
 });
-
-QUnit.test( "decimal to hex: 9 -> 9", function( assert ) {
-  var hexValue = Utilities.toHex(9);
-  console.log('toHex : hexValue =:'+hexValue+':');
-  assert.deepEqual( hexValue , "9", "Passed!" );
+QUnit.test( "0", function( assert ) {
+  assert.ok( Utilities.isGoodHexDigit('0') , "Passed!" );
 });
-
-QUnit.test( "decimal to hex: 16 -> -", function( assert ) {
-  var hexValue = Utilities.toHex(16);
-  console.log('toHex : hexValue =:'+hexValue+':');
-  assert.deepEqual( hexValue , "-", "Passed!" );
+QUnit.test( "G", function( assert ) {
+  assert.ok( !Utilities.isGoodHexDigit('G') , "Passed!" );
 });
-
-QUnit.test( "decimal to hex: 15 -> F", function( assert ) {
-  var hexValue = Utilities.toHex(15);
-  console.log('toHex : hexValue =:'+hexValue+':');
-  assert.deepEqual( hexValue , "F", "Passed!" );
-});
-
-QUnit.test( "decimal to hex: -1 -> -", function( assert ) {
-  var hexValue = Utilities.toHex(-1);
-  console.log('toHex : hexValue =:'+hexValue+':');
-  assert.deepEqual( hexValue , "-", "Passed!" );
+QUnit.test( "0A", function( assert ) {
+  assert.ok( !Utilities.isGoodHexDigit('0AG') , "Passed!" );
 });
 
 QUnit.module( 'Utilities: hexify (Binary To Hex) Tests');
@@ -75,11 +57,70 @@ QUnit.test('B -> 1011', function(assert) {
   assert.deepEqual(binValue,binValueOld, "Passed!");
 });
 
-QUnit.module('Utilities: String To Hex Tests');
-QUnit.test('"B" -> 1011', function(assert) {
-  var intValue = parseInt('B',16);
-  console.log('String To Hex : intValue =:'+intValue+':');
-  var stringValue = intValue.toString(2);
-  console.log('String To Hex : stringValue =:'+stringValue+':');
-  assert.deepEqual(stringValue,"1011", "Passed!");
+QUnit.module('Utilities: isGoodHexDigit Tests');
+QUnit.test('"B" ', function(assert) {
+    var result = Utilities.isGoodHexDigit("b");
+    console.log('isGo0dHexDigit : result=:'+result+':');
+    assert.ok(result, "Passed!");
+});
+
+QUnit.test('"0" ', function(assert) {
+    var result = Utilities.isGoodHexDigit("b");
+    console.log('isGo0dHexDigit : result=:'+result+':');
+    assert.ok(result, "Passed!");
+});
+
+QUnit.test('"F" ', function(assert) {
+    var result = Utilities.isGoodHexDigit("F");
+    console.log('isGo0dHexDigit : result=:'+result+':');
+    assert.ok(result, "Passed!");
+});
+
+QUnit.test('"f" ', function(assert) {
+    var result = Utilities.isGoodHexDigit("F");
+    console.log('isGo0dHexDigit : result=:'+result+':');
+    assert.ok(result, "Passed!");
+});
+
+QUnit.test('"g" ', function(assert) {
+    var result = Utilities.isGoodHexDigit("g");
+    console.log('isGo0dHexDigit : result=:'+result+':');
+    assert.ok(!result, "Passed!");
+});
+
+QUnit.module('Utilities: Hex to Int Tests');
+QUnit.test('"B" -> 11', function(assert) {
+    var intValue = Utilities.hexToInt("b");
+    console.log('hexToInt : intValue=:'+intValue+':');
+    assert.deepEqual(intValue,11, "Passed!");
+});
+
+QUnit.test('"0" -> 0', function(assert) {
+    var intValue = Utilities.hexToInt("0");
+    console.log('hexToInt : intValue=:'+intValue+':');
+    assert.deepEqual(intValue,0, "Passed!");
+});
+
+QUnit.test('"F" -> 15', function(assert) {
+    var intValue = Utilities.hexToInt("F");
+    console.log('hexToInt : intValue=:'+intValue+':');
+    assert.deepEqual(intValue,15, "Passed!");
+});
+
+QUnit.test('"G" -> 16', function(assert) {
+    try {
+        var intValue = Utilities.hexToInt("g");
+        console.log('hexToInt : intValue=:'+intValue+':');
+        assert.deepEqual(intValue,16, "Passed!");
+    }
+    catch(e) {
+        console.log('hexToInt : exception=:'+e+':');
+        assert.ok(e=="Invalid Hex Value", "Passed!");
+    }
+});
+
+QUnit.test('"FF" -> 255', function(assert) {
+    var intValue = Utilities.hexToInt("FF");
+    console.log('hexToInt : intValue=:'+intValue+':');
+    assert.deepEqual(intValue,255, "Passed!");
 });

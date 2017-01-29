@@ -3,14 +3,28 @@ function Utilities()
 {
 }
 
-// convert a single decimal digit to hex
-Utilities.toHex = function(d)
+Utilities.ValidHexDigits = "0123456789ABCDEF";
+
+Utilities.isGoodHexDigit = function(hexDigit)
 {
-	var hexstring = '0123456789ABCDEF';
-	if((d>=0) && (d < 16))
-		return hexstring.charAt(d);
-	return '-';
-} // tohex
+	if(hexDigit.length != 1) return false;
+	if(Utilities.ValidHexDigits.indexOf(hexDigit.toUpperCase()) == -1) return false;
+	return true;
+} // isGoodHexDigit
+
+Utilities.hexToInt = function(hexValue)
+{
+	var intValue = 0;
+	for(var h=hexValue.length-1; h>=0; --h) {
+		var thisChar = hexValue.charAt(h);
+		console.log('Utilities.hexToInt: hexValue.charAt('+h+') = :'+thisChar+':')
+		if(!Utilities.isGoodHexDigit(thisChar)) throw "Invalid Hex Value";
+		console.log('Utilities.hexToInt:  = :'+parseInt(thisChar,16)+':')
+		intValue += parseInt(thisChar,16) * Math.pow(16,h);
+	}
+		console.log('Utilities.hexToInt:  intValue= :'+intValue+':')
+	return intValue;
+} // hexToInt
 
 Utilities.hexify = function(binaryValue)
 {
