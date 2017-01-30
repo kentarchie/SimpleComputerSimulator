@@ -12,34 +12,34 @@ QUnit.test( "0A", function( assert ) {
   assert.ok( !Utilities.isGoodHexDigit('0AG') , "Passed!" );
 });
 
-QUnit.module( 'Utilities: hexify (Binary To Hex) Tests');
-QUnit.test( 'binary to hex: 1111 ->F ', function( assert ) {
-  var hexValue = Utilities.hexify('1111');
-  console.log('hexify : hexValue =:'+hexValue+':');
+QUnit.module( 'Utilities: binaryToHex Tests');
+QUnit.test( 'binaryToHex: 1111 ->F ', function( assert ) {
+  var hexValue = Utilities.binaryToHex('1111');
+  console.log('binaryToHex : hexValue =:'+hexValue+':');
   assert.deepEqual( hexValue , 'F', "Passed!" );
 });
 
-QUnit.test( 'binary to hex: 0 ->- ', function( assert ) {
-  var hexValue = Utilities.hexify('0');
-  console.log('hexify : hexValue =:'+hexValue+':');
-  assert.deepEqual( hexValue , '-', "Passed!" );
+QUnit.test( 'binaryToHex: 0 ->- ', function( assert ) {
+  var hexValue = Utilities.binaryToHex('0');
+  console.log('binaryToHex : binaryToHex =:'+hexValue+':');
+  assert.deepEqual( hexValue , '1', "Passed!" );
 });
 
-QUnit.test( 'binary to hex: 0000 ->- ', function( assert ) {
-  var hexValue = Utilities.hexify('0000');
-  console.log('hexify : hexValue =:'+hexValue+':');
+QUnit.test( 'binaryToHex: 0000 ->- ', function( assert ) {
+  var hexValue = Utilities.binaryToHex('0000');
+  console.log('binaryToHex : hexValue =:'+hexValue+':');
   assert.deepEqual( hexValue , '0', "Passed!" );
 });
 
-QUnit.test( 'binary to hex: 0101 ->5 ', function( assert ) {
-  var hexValue = Utilities.hexify('0101');
-  console.log('hexify : hexValue =:'+hexValue+':');
+QUnit.test( 'binaryToHex: 0101 ->5 ', function( assert ) {
+  var hexValue = Utilities.binaryToHex('0101');
+  console.log('binaryToHex : hexValue =:'+hexValue+':');
   assert.deepEqual( hexValue , '5', "Passed!" );
 });
 
-QUnit.test( 'binary to hex: 1011 ->B ', function( assert ) {
-  var hexValue = Utilities.hexify('1011');
-  console.log('hexify : hexValue =:'+hexValue+':');
+QUnit.test( 'binaryToHex: 1011 ->B ', function( assert ) {
+  var hexValue = Utilities.binaryToHex('1011');
+  console.log('binaryToHex : hexValue =:'+hexValue+':');
   assert.deepEqual( hexValue , 'B', "Passed!" );
 });
 
@@ -123,4 +123,17 @@ QUnit.test('"FF" -> 255', function(assert) {
     var intValue = Utilities.hexToInt("FF");
     console.log('hexToInt : intValue=:'+intValue+':');
     assert.deepEqual(intValue,255, "Passed!");
+});
+
+QUnit.module('Utilities: Hex to Binary Tests');
+QUnit.test('"F" -> 1111', function(assert) {
+    var bitString = Utilities.hexToBinary("F");
+    console.log('hexToBinary : bitString=:'+bitString+':');
+    assert.deepEqual(bitString,'1111', "Passed!");
+});
+
+QUnit.test('"FF" -> 1111', function(assert) {
+    var bitString = Utilities.hexToBinary("F");
+    console.log('hexToBinary : bitString=:'+bitString+':');
+    assert.deepEqual(bitString,'1111', "Passed!");
 });
