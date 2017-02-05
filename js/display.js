@@ -39,7 +39,7 @@ function makeMemoryDisplay()
 		    // unique, sequential memory cell ids
 		    var num=col + (MemRows * row);
 		    var id="mem" + num;
-   	     	var label = tohex(row) + "" + tohex(col) + ":";
+   	     	var label = Utilities.intToHex(row) + "" + Utilities.intToHex(col) + ":";
    	     	str += "<label>"+label+"</label>";
    	     	str += "<div contenteditable='true' class='memoryCell' id='" + id + "'>00</div>";
        		str += '</td>';
@@ -56,7 +56,7 @@ function makeRegisterDisplay()
   	var str = "";
 	for(var i=0; i<NumRegs; i++) {
 		var id = "r" + i;
-		var label = '<label>'+'R' + tohex(i) + ':' + '</label>';
+		var label = '<label>'+'R' + Utilities.intToHex(i) + ':' + '</label>';
 		var sp = " <div contenteditable='true' class='registerCell' id='" + id + "'>00</div>";
 		str+= "<li>" + label + sp + "</li>\n";
 	} // for
