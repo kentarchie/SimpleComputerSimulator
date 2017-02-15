@@ -78,9 +78,16 @@ section {
 }
 .registerCell {
   margin-left: 5px;
-  font-size: 12pt;
   border:1px solid black;
   display:inline;
+}
+.registerCellNormal {
+  position:relative;
+  font-size: 12pt;
+}
+.registerCellEdit {
+  position:absolute;
+  font-size: 16pt;
 }
 
 label {

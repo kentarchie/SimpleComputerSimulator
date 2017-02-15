@@ -2,8 +2,7 @@
 
 function rotate(register,amount)
 {
-   var bit,v;
-   var regstr=Registers[hex_dec(register)];
+   var regstr=Registers[Utilities.hexToInt(register)];
    var value=binify(regstr.slice(0,1)) + binify(regstr.slice(1,2));
    for(var i=0;i<hex_dec(amount);i++) {
       var bit=value.charAt(7);

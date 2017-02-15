@@ -22,7 +22,7 @@ Utilities.hexToInt = function(hexValue)
 		console.log('Utilities.hexToInt:  = :'+parseInt(thisChar,16)+':')
 		intValue += parseInt(thisChar,16) * Math.pow(16,h);
 	}
-		console.log('Utilities.hexToInt:  intValue= :'+intValue+':')
+	console.log('Utilities.hexToInt:  intValue= :'+intValue+':')
 	return intValue;
 } // hexToInt
 

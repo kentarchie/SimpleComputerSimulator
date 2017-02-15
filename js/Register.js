@@ -2,7 +2,7 @@
 function Register (elId,domObject,initValue) {
     this.elementId = elId;
     this.domObject = domObject;
-    this.value = initvalue;
+    this.value = initValue;
 }
 
 Register.prototype.getValue = function() {
@@ -20,10 +20,12 @@ Register.prototype.getDomObject = function() {
 Register.prototype.setValue = function(val) {
     this.Value = val;
     this.updateDisplay();
+    console.log('Register: setValue: val=:'+this.value+ ':')
 };
 
 Register.prototype.updateFromDisplay = function() {
-    this.Value = domObject.html();
+    this.value = domObject.html();
+    console.log('Register: updateFromDisplay: val=:'+this.value+ ':')
 };
 
 Register.prototype.updateDisplay = function() {
