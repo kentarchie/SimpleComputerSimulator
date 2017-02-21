@@ -52,20 +52,6 @@ function makeMemoryDisplay()
   	$("#memoryBlock").html(str);
 } // makeMemoryDisplay
 
-function makeRegisterDisplay()
-{
-  	console.log('makeRegisterDisplay: START');
-	for(var i=0; i<NumRegs; i++) {
-		var id = "r" + i;
-		var label = '<label>'+'R' + Utilities.intToHex(i) + ':' + '</label>';
-		var sp = " <div contenteditable='true' class='registerCell' id='" + id + "'>00</div>";
-		var str = "<li>" + label + sp + "</li>\n";
-        var reg = $(str);
-        Registers[id] = new Register(id,reg,"00");
-  	    $('#registers').append(reg);
-	} // for
-  	console.log('makeRegisterDisplay: DONE');
-} // makeRegisterDisplay
 
 // from https://stackoverflow.com/questions/6139107/programatically-select-text-in-a-contenteditable-html-element/6150060#6150060
 function selectElementContents(el)

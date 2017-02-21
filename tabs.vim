@@ -1,10 +1,11 @@
 tabe js/machineStart.js
 tabe js/machine.js
 tabe js/display.js
+tabe js/Register.js
 tabe js/commands.js
 tabe js/machineInstructions.js
-tabe js/util.js
+tabe js/Utilities.js
 tabe css/machine.css
 tabe main.html
-tabe machinenotes.html
+tabe docs/machinenotes.html
 tabe README.md

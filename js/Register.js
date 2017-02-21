@@ -24,10 +24,15 @@ Register.prototype.setValue = function(val) {
 };
 
 Register.prototype.updateFromDisplay = function() {
-    this.value = domObject.html();
+    this.value = this.domObject.html();
     console.log('Register: updateFromDisplay: val=:'+this.value+ ':')
 };
 
 Register.prototype.updateDisplay = function() {
-    domObject.html(this.value);
+    this.domObject.html(this.value);
+};
+
+Register.prototype.validate = function() {
+    if((this.value < 0) && (this.value >= 255)) return false;
+    return true;
 };
